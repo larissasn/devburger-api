@@ -1,5 +1,6 @@
 import { v4 } from 'uuid';
 import * as Yup from 'yup';
+import * as Yup from 'yup';
 import User from '../models/User';
 
 class UserController {
@@ -25,8 +26,13 @@ class UserController {
       email,
       password_hash,
       admin,
+      admin,
     });
     return res.status(201).json({
+      id: user.id,
+      name,
+      email,
+      admin,
       id: user.id,
       name,
       email,
