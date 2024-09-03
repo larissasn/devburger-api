@@ -10,7 +10,14 @@ class Category extends Model {
         sequelize,
       },
     );
-    // return this;
+    return this;
+  }
+
+  static associate(models) {
+    this.belongsTo(models.Category, {
+      foreignKey: 'category_id',
+      as: 'category',
+    });
   }
 }
 
