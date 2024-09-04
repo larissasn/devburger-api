@@ -4,8 +4,8 @@ import multerConfig from './config/multer';
 import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
 import ProductController from './app/controllers/ProductController';
-import authMiddleware from './middlewares/auth';
 import CategoryController from './app/controllers/CategoryController';
+import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
 
