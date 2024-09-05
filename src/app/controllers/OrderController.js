@@ -59,12 +59,11 @@ class OrderController {
         name: request.userName,
       },
       products: formattedProducts,
-      // status: 'Pedido realizado!',
+      status: 'Pedido realizado!',
     };
 
-    // const createOrder = await Order.create(order);
-    // return response.status(201).json(createOrder);
-    return response.status(201).json(order);
+    const createOrder = await Order.create(order);
+    return response.status(201).json(createOrder);
   }
 
   // async index(request, response) {
