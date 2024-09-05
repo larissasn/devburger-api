@@ -66,39 +66,38 @@ class OrderController {
     return response.status(201).json(createOrder);
   }
 
-  // async index(request, response) {
-  //   const orders = await Order.find();
-  //   console.log(orders);
+  async index(request, response) {
+    const orders = await Order.find();
 
-  //   return response.json(orders);
-  // }
+    return response.json(orders);
+  }
 
-  // async update(request, response) {
-  //   const schema = Yup.object({
-  //     status: Yup.string().required(),
-  //   });
+  async update(request, response) {
+    const schema = Yup.object({
+      status: Yup.string().required(),
+    });
 
-  //   try {
-  //     schema.validateSync(request.body, { abortEarly: false });
-  //   } catch (err) {
-  //     return response.status(400).json({ error: err.errors });
-  //   }
+    try {
+      schema.validateSync(request.body, { abortEarly: false });
+    } catch (err) {
+      return response.status(400).json({ error: err.errors });
+    }
 
-  //   const { admin: isAdmin } = await User.findByPk(request.userId);
+    // const { admin: isAdmin } = await User.findByPk(request.userId);
 
-  //   if (!isAdmin) {
-  //     return response.status(401).json({ error: 'Unauthorized' });
-  //   }
+    // if (!isAdmin) {
+    //   return response.status(401).json({ error: 'Unauthorized' });
+    // }
 
-  //   const { id } = request.params;
-  //   const { status } = request.body;
+    const { id } = request.params;
+    const { status } = request.body;
 
-  //   try {
-  //     await Order.updateOne({ _id: id }, { status });
-  //   } catch (err) {
-  //     return response.status(400).json({ error: err.message });
-  //   }
-  //   return response.json({ message: 'status updated sucessfully ' });
-  // }
+    try {
+      await Order.updateOne({ _id: id }, { status });
+    } catch (err) {
+      return response.status(400).json({ error: err.message });
+    }
+    return response.json({ message: 'status updated sucessfully ' });
+  }
 }
 export default new OrderController();
